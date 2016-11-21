@@ -1,7 +1,5 @@
 var express = require('express'),
     watch = require('watch'),
-    emailPanel = require('./emails'),
-    firebasePanel = require('./firebase-tools'),
     generator = require('./generator'),
     ziputils = require('./ziputils'),
 	opener = require('opener'),
@@ -12,15 +10,28 @@ module.exports = {
         var app = express(),
             tempOutputPath = __dirname + '/_site-' + port;
 
-        generator.run(targetPath, tempOutputPath);
+        var settings = generator.run(targetPath, tempOutputPath);
 
         app.use(express.static(tempOutputPath));
 
-        var ep = emailPanel.init(targetPath, port);
-        app.use('/emails', ep);
+        if (settings.extras.length > 0) {
+            settings.extras.forEach(function (extra) {
+                
+                if (extra.name === 'firebase-tools') {
+                    console.log('Adding Firebase Extras');
+                    var fbp = require(path.join(targetPath, '/node_modules/candygen-firebase/index.js'))
+                        .init(targetPath, tempOutputPath, port, express, extra);
+                    app.use('/firebase', fbp);
+                }
 
-        var fbp = firebasePanel.init(targetPath, tempOutputPath, port);
-        app.use('/firebase', fbp);
+                if (extra.name === 'email-tools') {
+                    console.log('Adding Email Extras');
+                    var ep = require(path.join(targetPath, '/node_modules/candygen-email/index.js'))
+                        .init(targetPath, tempOutputPath, port, express, extra);
+                    app.use('/emails', ep);
+                }
+            });
+        }
 
         app.get('/regenerate', function (req, res) {
             generator.run(targetPath, tempOutputPath);
@@ -34,8 +45,6 @@ module.exports = {
         app.get('/zip-result', function (req, res) {
             ziputils.downloadAsZip(targetPath, tempOutputPath, res, true);
         });
-
-
 
         app.use(function(req, res, next) {
             res.status(404).sendFile(__dirname + '/_site-' + port + '/404.html');
