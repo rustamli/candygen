@@ -3,8 +3,6 @@ var fs = require('fs'),
     fsExtra = require('fs-extra'),
     path = require('path'),
     Handlebars = require('handlebars'),
-    writefile = require('writefile'),
-    wrench = require('wrench'),
     CSON = require('cson-parser'),
     marked = require('marked'),
     oxhelpers = require('./oxhelpers'),
@@ -45,20 +43,9 @@ module.exports = {
     copyStaticFiles: function () {
         try {
             var staticFilesPath = path.join(_settings.targetPath, '/static');
-            wrench.copyDirSyncRecursive(staticFilesPath, _settings.tempOutputPath, {
-                forceDelete: true
-            });
+            fsExtra.copySync(staticFilesPath, _settings.tempOutputPath);
         } catch (e) {
             console.warn('Static files were not found');
-        }
-
-        try {
-            var staticDataFilesPath = path.join(_settings.targetPath, '/data/static');
-            wrench.copyDirSyncRecursive(staticDataFilesPath, path.join(_settings.tempOutputPath, '/data'), {
-                forceDelete: true
-            });
-        } catch (e) {
-            console.warn('Static data files were not found');
         }
 
         if (_settings.extras.length > 0) {
@@ -83,6 +70,12 @@ module.exports = {
             var source = fs.readFileSync(path.join(_settings.targetPath, '/' + partial.template), 'utf8');
             Handlebars.registerPartial(partial.name, source);
         });
+
+        if (_settings.helpers) {
+            _settings.helpers.forEach(function (helper) {
+                Handlebars.registerHelper(helper.name, helper.fn);
+            });
+        }
 
         oxhelpers.register(Handlebars);
     },
@@ -138,15 +131,17 @@ module.exports = {
                 var fileName = '/' + rule.output.replace('@ID@', page.pageId)
                         .replace('@PAGENUM@', pageNum);										
 				
-		page._page = {
-		    path: fileName.substr(0, fileName.lastIndexOf('/')) + '/',
-		    fullPath: fileName,
-		    name: fileName.substr(1 + fileName.lastIndexOf('/'))
-		};
-		
-		var fileContent = generator.tryApplyTemplate(template, page, rule.template);
-
-                writefile(path.join(_settings.tempOutputPath,  fileName), fileContent);
+                page._page = {
+                    path: fileName.substr(0, fileName.lastIndexOf('/')) + '/',
+                    fullPath: fileName,
+                    name: fileName.substr(1 + fileName.lastIndexOf('/'))
+                };
+                
+                var fileContent = generator.tryApplyTemplate(template, page, rule.template),
+                    filePath = path.join(_settings.tempOutputPath,  fileName);
+                    
+                fsExtra.ensureDirSync(path.dirname(filePath));   
+                fs.writeFileSync(filePath, fileContent);
 
                 pageNum += 1;
             });
@@ -171,7 +166,7 @@ module.exports = {
             var folderPath = path.join(_settings.targetPath, dataFolder),
                 generator = this;
 
-            var files = wrench.readdirSyncRecursive(folderPath);
+            var files = fs.readdirSync(folderPath);
 
             data = {pages: []};
             files.forEach(function (file) {

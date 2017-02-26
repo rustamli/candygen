@@ -4,7 +4,24 @@ var fs = require('fs'),
     parseXML = require('xml2js').parseString;
 
 module.exports = {
-    loadSettings: function (targetPath) {
+    loadSettings (targetPath) {
+        var out = null;
+
+        const configPath = path.join(targetPath, '/candygen.config.js');
+
+        if (fs.existsSync(configPath)) {
+            out = require(configPath).init();
+            out.templates = {};
+            out.targetPath = targetPath;
+            out.dfcache = {};
+        } else {
+            out = this.loadSettingsXml(targetPath);    
+        }
+
+        return out;
+    },
+
+    loadSettingsXml: function (targetPath) {
         var source = fs.readFileSync(path.join(targetPath, '/generator.xml'), 'utf8'),
             settings = null;
 

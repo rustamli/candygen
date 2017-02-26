@@ -1,6 +1,6 @@
 {
   "name": "candygen",
-  "version": "1.1.0",
+  "version": "1.3.0",
   "description": "Scriptable Static Website Generator",
   "main": "generator.js",
   "preferGlobal": true,
@@ -24,18 +24,16 @@
   },
   "homepage": "https://github.com/husayt/lx-websites",
   "dependencies": {
-    "archiver": "^0.14.4",
+    "archiver": "^1.3.0",
     "cson-parser": "^1.1.0",
     "express": ">= 4.11.2",
-    "fs-extra": "^0.30.0",
+    "fs-extra": "^2.0.0",
     "handlebars": "4.x.x",
     "juice": "^1.2.0",
     "lodash": "^3.10.1",
     "marked": "^0.3.5",
     "opener": "*",
     "watch": ">= 0.14.0",
-    "wrench": ">= 1.5.8",
-    "writefile": ">= 0.2.8",
     "xml2js": ">= 0.4.5"
   }
 }
