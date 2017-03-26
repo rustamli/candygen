@@ -10,6 +10,7 @@ module.exports = {
         const configPath = path.join(targetPath, '/candygen.config.js');
 
         if (fs.existsSync(configPath)) {
+            delete require.cache[configPath];
             out = require(configPath).init();
             out.templates = {};
             out.targetPath = targetPath;
