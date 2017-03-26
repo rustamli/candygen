@@ -136,10 +136,10 @@ module.exports = {
                     fullPath: fileName,
                     name: fileName.substr(1 + fileName.lastIndexOf('/'))
                 };
-                
-                var fileContent = generator.tryApplyTemplate(template, page, rule.template),
-                    filePath = path.join(_settings.tempOutputPath,  fileName);
-                    
+
+            	var fileContent = generator.tryApplyTemplate(template, page, rule.template),
+                filePath = path.join(_settings.tempOutputPath,  fileName);
+                                
                 fsExtra.ensureDirSync(path.dirname(filePath));   
                 fs.writeFileSync(filePath, fileContent);
 
@@ -293,8 +293,8 @@ module.exports = {
                         generator.runRule(rule);
                     });
                     console.log('DONE.');
-                } else if (f.indexOf('generator.xml') > -1) {
-                    _settings = settingsLoader.loadSettings(_settings.targetPath);
+                } else if (f.indexOf('generator.xml') > -1 || f.indexOf('candygen.config.js') > -1) {
+                    _settings = settingsLoader.loadSettings(_settings.targetPath, _settings.tempOutputPath);
                     this.fullReRun();
                 } else {
                     this.fullReRun();

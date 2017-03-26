@@ -4,16 +4,18 @@ var fs = require('fs'),
     parseXML = require('xml2js').parseString;
 
 module.exports = {
-    loadSettings (targetPath) {
+    loadSettings (targetPath, tempOutputPath) {
         var out = null;
 
         const configPath = path.join(targetPath, '/candygen.config.js');
 
         if (fs.existsSync(configPath)) {
+            delete require.cache[configPath];
             out = require(configPath).init();
             out.templates = {};
             out.targetPath = targetPath;
             out.dfcache = {};
+            out.tempOutputPath = tempOutputPath;
         } else {
             out = this.loadSettingsXml(targetPath);    
         }
