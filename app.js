@@ -8,7 +8,6 @@ var express = require('express'),
 const candyBuild = '/candy-build';
 module.exports = {
     generateOnce: function(targetPath) {
-        var app = express();
         generator.run(targetPath, targetPath + candyBuild);
         console.log(`Please navigate to ${candyBuild} to get the build of your website.`);
     },
