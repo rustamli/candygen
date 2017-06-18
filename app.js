@@ -5,7 +5,7 @@ var express = require('express'),
 	opener = require('opener'),
     path = require('path');
 
-const candyBuild = '/candy-build';
+const candyBuild = '/build';
 module.exports = {
     generateOnce: function(targetPath) {
         generator.run(targetPath, targetPath + candyBuild);
