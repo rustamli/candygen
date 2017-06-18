@@ -17,7 +17,7 @@ process.argv.slice(2).forEach(function (val, index, array) {
         staticMode = true;
     }
 
-    if (val.includes('once')) {
+    if (val === 'once') {
         generateOnce = true;
     }
 });
