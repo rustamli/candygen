@@ -27,7 +27,7 @@ After the first generation, candygen will watch files for changes and will updat
 
 
 ```
-candygen -once
+candygen once
 ```
 This will generate the website without starting a web server
 
