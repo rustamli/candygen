@@ -5,7 +5,13 @@ var express = require('express'),
 	opener = require('opener'),
     path = require('path');
 
+const candyBuild = '/build';
 module.exports = {
+    generateOnce: function(targetPath) {
+        generator.run(targetPath, targetPath + candyBuild);
+        console.log(`Please navigate to ${candyBuild} to get the build of your website.`);
+    },
+
     start: function (targetPath, port) {
         var app = express(),
             tempOutputPath = __dirname + '/_site-' + port;

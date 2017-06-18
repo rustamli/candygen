@@ -3,7 +3,8 @@
 var app = require('../app'),
     pjson = require('../package.json'),
     port = 8000,
-    staticMode = false;
+    staticMode = false,
+    generateOnce = false;
 
 console.log('=== candygen ' + pjson.version + ' ===');
 
@@ -15,9 +16,15 @@ process.argv.slice(2).forEach(function (val, index, array) {
     if (val === 'static') {
         staticMode = true;
     }
+
+    if (val === 'once') {
+        generateOnce = true;
+    }
 });
 
-if (staticMode) {
+if (generateOnce) {
+    app.generateOnce(process.cwd());
+} else if (staticMode) {
     app.staticServe(process.cwd(), port);
 } else {
     app.start(process.cwd(), port);
