@@ -6,7 +6,7 @@ var app = require('../app'),
     staticMode = false,
     generateOnce = false;
 
-console.log('=== candygen12 ' + pjson.version + ' ===');
+console.log('=== candygen ' + pjson.version + ' ===');
 
 process.argv.slice(2).forEach(function (val, index, array) {
     if (val.lastIndexOf('port=', 0) === 0) {
