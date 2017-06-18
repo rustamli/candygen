@@ -14,7 +14,7 @@ npm install candygen -g
 
 ## Usage
 
-Open `cmd` go to any folder with a website template (a folder containing `generator.xml`) and run:
+Open `cmd` go to any folder with a website template (a folder containing `generator.xml` or `generator.json`) and run:
 
 ```
 candygen
@@ -25,6 +25,11 @@ This will start a dev server, to stop it simply close the `cmd` window or press 
 
 After the first generation, candygen will watch files for changes and will update website automatically  
 
+
+```
+candygen -once
+```
+This will generate the website without starting a web server
 
 **Specify custom port**
 
