@@ -46,22 +46,6 @@ module.exports = {
         } catch (e) {
             console.warn('Static files were not found');
         }
-
-        if (_settings.extras.length > 0) {
-            _settings.extras.forEach(function (extra) {
-                var extraModuleMapping = {
-                    'firebase-tools': 'candygen-firebase',
-                    'email-tools': 'candygen-email'
-                };
-                try {
-                    var extraFilesPath = path.join(_settings.targetPath,
-                        '/node_modules/' + extraModuleMapping[extra.name] + '/static');
-                    fsExtra.copySync(extraFilesPath, _settings.tempOutputPath);
-                } catch (e) {
-                    console.warn('Extra files were not found');
-                }
-            });
-        }
     },
 
     initHandlebars: function () {

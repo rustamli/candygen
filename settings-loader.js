@@ -31,7 +31,6 @@ module.exports = {
             var GS = parsedXML.GeneratorSettings,
                 settings = {
                     version: GS.$.version,
-                    extras: [],
                     partials: [],
                     rules: [],
                     templates: {},
@@ -42,12 +41,6 @@ module.exports = {
             if (GS.partials && GS.partials.length > 0 && GS.partials[0].partial) {
                 GS.partials[0].partial.forEach(function (partial) {
                     settings.partials.push(partial.$);
-                });
-            }
-
-            if (GS.extras && GS.extras.length > 0 && GS.extras[0].extra) {
-                GS.extras[0].extra.forEach(function (extra) {
-                    settings.extras.push(extra.$);
                 });
             }
 

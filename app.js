@@ -20,25 +20,6 @@ module.exports = {
 
         app.use(express.static(tempOutputPath));
 
-        if (settings.extras.length > 0) {
-            settings.extras.forEach(function (extra) {
-                
-                if (extra.name === 'firebase-tools') {
-                    console.log('Adding Firebase Extras');
-                    var fbp = require(path.join(targetPath, '/node_modules/candygen-firebase/index.js'))
-                        .init(targetPath, tempOutputPath, port, express, extra);
-                    app.use('/firebase', fbp);
-                }
-
-                if (extra.name === 'email-tools') {
-                    console.log('Adding Email Extras');
-                    var ep = require(path.join(targetPath, '/node_modules/candygen-email/index.js'))
-                        .init(targetPath, tempOutputPath, port, express, extra);
-                    app.use('/emails', ep);
-                }
-            });
-        }
-
         app.get('/regenerate', function (req, res) {
             generator.run(targetPath, tempOutputPath);
             res.send('OK');

@@ -62,16 +62,6 @@ _arguments could be in any order_
 `_page.fullPath` - full path to page including page name
 `_page.name` - page name (last part of url)
 
-**Extras**
-
-Add extra tools in generator.xml:
-
-```
-<extras>
-  <extra name="email-tools" />
-</extras>
-```
-
 
 ## Support
 
