@@ -1,6 +1,6 @@
 {
   "name": "candygen",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Scriptable Static Website Generator",
   "main": "generator.js",
   "preferGlobal": true,

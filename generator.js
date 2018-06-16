@@ -5,7 +5,6 @@ var fs = require('fs'),
     Handlebars = require('handlebars'),
     CSON = require('cson-parser'),
     marked = require('marked'),
-    oxhelpers = require('./oxhelpers'),
     settingsLoader = require('./settings-loader'),
     _ = require('lodash'),
     _settings;
@@ -55,7 +54,7 @@ module.exports = {
                     'email-tools': 'candygen-email'
                 };
                 try {
-                    var extraFilesPath = path.join(_settings.targetPath, 
+                    var extraFilesPath = path.join(_settings.targetPath,
                         '/node_modules/' + extraModuleMapping[extra.name] + '/static');
                     fsExtra.copySync(extraFilesPath, _settings.tempOutputPath);
                 } catch (e) {
@@ -76,8 +75,6 @@ module.exports = {
                 Handlebars.registerHelper(helper.name, helper.fn);
             });
         }
-
-        oxhelpers.register(Handlebars);
     },
 
     processRules: function () {
@@ -127,10 +124,10 @@ module.exports = {
                 if (generator.pageConstructors.hasOwnProperty(rule.ds)) {
                     generator.pageConstructors[rule.ds](page, rule);
                 }
-			
+
                 var fileName = '/' + rule.output.replace('@ID@', page.pageId)
-                        .replace('@PAGENUM@', pageNum);										
-				
+                        .replace('@PAGENUM@', pageNum);
+
                 page._page = {
                     path: fileName.substr(0, fileName.lastIndexOf('/')) + '/',
                     fullPath: fileName,
@@ -139,8 +136,8 @@ module.exports = {
 
             	var fileContent = generator.tryApplyTemplate(template, page, rule.template),
                 filePath = path.join(_settings.tempOutputPath,  fileName);
-                                
-                fsExtra.ensureDirSync(path.dirname(filePath));   
+
+                fsExtra.ensureDirSync(path.dirname(filePath));
                 fs.writeFileSync(filePath, fileContent);
 
                 pageNum += 1;
