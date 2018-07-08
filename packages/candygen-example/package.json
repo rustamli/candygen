@@ -1,0 +1,9 @@
+{
+  "name": "@candygen/example",
+  "version": "2.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@candygen/generator": "^2.0.0",
+    "@candygen/dev-server": "^2.0.0"
+  }
+}

@@ -1,0 +1,28 @@
+<html>
+<head>
+  <style>
+    body {
+      margin: 20px auto;
+      padding: 0;
+      width: 400px;
+      text-align: center;
+    }
+
+    .content {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    {{> header}}
+
+    {{#each posts}}
+    <h1>{{title}}</h1>
+    <div>
+    {{body}}
+    </div>
+    {{/each}}
+  </div>
+</body>
+</html>
