@@ -3,3 +3,5 @@ dist
 output
 .lerna-debug
 .yarn-debug
+yarn-error.log
+

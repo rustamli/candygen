@@ -2,7 +2,6 @@ module.exports = {
   init: function () {
     return {
       schemaVersion: '1.0',
-      outputPath: '/Users/turan/gh/candyland/candygen/packages/candygen-example/output',
       
       rules: [
         {
