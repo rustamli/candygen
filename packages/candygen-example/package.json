@@ -2,6 +2,7 @@
   "name": "@candygen/example",
   "version": "2.0.0",
   "license": "MIT",
+  "author": "Turan Rustamli <turan@rustam.li> (http://rustam.li)",
   "dependencies": {
     "@candygen/generator": "^2.0.0",
     "@candygen/dev-server": "^2.0.0"

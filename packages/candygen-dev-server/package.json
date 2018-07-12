@@ -1,19 +1,23 @@
 {
   "name": "@candygen/dev-server",
   "version": "2.0.0",
-  "main": "dist/index.js",
   "license": "MIT",
+  "author": "Turan Rustamli <turan@rustam.li> (http://rustam.li)",
+  "main": "dist/index.js",
   "bin": {
     "cg-dev": "./bin/cg-dev.js"
+  },
+  "scripts": {
+    "build": "yarn install; tsc"
   },
   "dependencies": {
     "@candygen/generator": "2.0.0",
     "express": "^4.16.3",
     "opener": "^1.4.3",
-    "typescript": "^2.9.2",
     "watch": "^1.0.2"
   },
   "devDependencies": {
+    "typescript": "^2.9.2",
     "@types/express": "^4.16.0",
     "@types/opener": "^1.4.0",
     "@types/watch": "^1.0.0"
