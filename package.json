@@ -6,7 +6,7 @@
     "tsc-generator": "cd packages/candygen-generator; tsc",
     "tsc-dev-server": "cd packages/candygen-dev-server; tsc",
     "bootstrap": "lerna bootstrap",
-    "build": "npm-run-all bootstrap tsc-generator tsc-dev-server",
+    "build": "yarn bootstrap; yarn tsc-generator; yarn tsc-dev-server",
     "tsc-generator--watch": "cd packages/candygen-generator; tsc -w",
     "tsc-dev-server--watch": "cd packages/candygen-dev-server; tsc -w",
     "tsc-all--watch": "npm-run-all  --parallel tsc-generator--watch tsc-dev-server--watch"
