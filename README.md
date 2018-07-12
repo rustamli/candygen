@@ -1,6 +1,6 @@
 # candygen :candy:
 
-Highly customizable multi-purpose rule based generator that can be used in a wide variety of use-cases. Candygen has been previously used for building static websites with arbitrary structure, email templating and even code generation (see [Examples](#exmaples) section for more details).
+Highly customizable multi-purpose rule based generator that can be used in a wide variety of use-cases. Candygen has been previously used for building static websites with arbitrary structure, email templating and even code generation (see [Examples](#examples) section for more details).
 
 ## Getting Started
 
