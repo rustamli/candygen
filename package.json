@@ -1,5 +1,11 @@
 {
+  "version": "2.0.0",
+  "license": "MIT",
   "scripts": {
+    "tsc-generator": "cd packages/candygen-generator; tsc",
+    "tsc-dev-server": "cd packages/candygen-dev-server; tsc",
+    "bootstrap": "lerna bootstrap --hoist",
+    "build": "npm-run-all tsc-generator bootstrap tsc-dev-server bootstrap",
     "tsc-generator--watch": "cd packages/candygen-generator; tsc -w",
     "tsc-dev-server--watch": "cd packages/candygen-dev-server; tsc -w",
     "tsc-all--watch": "npm-run-all  --parallel tsc-generator--watch tsc-dev-server--watch"
