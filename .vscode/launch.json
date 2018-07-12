@@ -1,0 +1,28 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/packages/candygen-example",
+      "name": "Generate Example",
+      "program": "${workspaceFolder}/packages/candygen-generator/bin/cg.js",
+      "outFiles": [
+        "${workspaceFolder}/packages/candygen-generator/dist/**/*.js"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/packages/candygen-example",
+      "name": "Dev Server Example",
+      "program": "${workspaceFolder}/packages/candygen-dev-server/bin/cg-dev.js",
+      "outFiles": [
+        "${workspaceFolder}/packages/candygen-dev-server/dist/**/*.js"
+      ]
+    }
+  ]
+}
