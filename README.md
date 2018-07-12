@@ -1,4 +1,4 @@
-# candygen
+# candygen :candy:
 
 Highly customizable multi-purpose rule based generator that can be used in a wide variety of use-cases. Candygen has been previously used for building static websites with arbitrary structure, email templating and even code generation (see [Examples](#exmaples) section for more details).
 
@@ -208,7 +208,7 @@ Data contains data in the JSON format that either will be directly passed to the
 
 In case if data is directly passed to the template it should be in the following format:
 
-```json
+```javascript
 {
   "pages": [
     {...}
@@ -240,7 +240,7 @@ module.exports = {
 A script must always return output in the following format:
 
 
-```json
+```javascript
 {
   "pages": [
     {...}
@@ -333,16 +333,58 @@ helpers: [
 
 ## Dev Server
 
-Candygen Dev Server 
+Candygen Dev Server runs in background and serves the latest result of the generation. When any input file changes, Dev Server updates the output correspondingly. It is installable as a separate package:
+
+```
+yarn add @candygen/dev-server
+```
+
+In order to run it, run the following command in the folder contaning `candygen.config.js`:
+
+```
+yarn cg-dev
+```
+
+Optionally you can specify a port on which dev server will run:
+
+```
+yarn cg-dev port=3333
+```
+
+## Developing candygen
+
+This repo contains all packages related to candygen and represents a monorepo. It is using (lerna)[https://lernajs.io/] to manage multiple packages.
+It is recommended to use [yarn](https://yarnpkg.com/en/) for package management as this project relies on yarn workspaces. This repo includes a basic [VSCode](https://code.visualstudio.com/) configuration for debugging generator and dev-server packages. In order to start developing locally, checkout this repository and run:
+
+```
+yarn build
+```
+
+To run TypeScript compiler in watch mode for all sub-packages use the following command:
+
+```
+yarn tsc-all--watch
+```
+
+## Examples
+
+Here's a list of websites using candygen:
+
+- [landmax.pro](https://www.landmax.pro)
+- [getguided.net](https://getguided.net)
+
+Another example could be found under `packages/candygen-example`
+This example package is also installable running `yarn add @candygen/example`
 
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning
 
+## Authors
+
+* **Turan Rustamli** ([rustamli](https://github.com/rustamli))
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Examples
-
-...
