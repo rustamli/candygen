@@ -6,6 +6,10 @@ Highly customizable multi-purpose rule based generator that can be used in a wid
 
 These section will guide you through installation and basic setup for your first candygen project.
 
+## Live Demo
+
+[![Edit candygen-test](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/2ojvol3yyp)
+
 ### Prerequisites
 
 In order to use candygen you will need to have [Node.js](https://nodejs.org/en/) installed on your system. 
