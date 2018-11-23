@@ -1,6 +1,6 @@
 {
   "name": "@candygen/generator",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "license": "MIT",
   "author": "Turan Rustamli <turan@rustam.li> (http://rustam.li)",
   "main": "dist/index.js",
@@ -15,9 +15,9 @@
     "handlebars": "^4.0.11"
   },
   "devDependencies": {
-    "typescript": "^2.9.2",
     "@types/fs-extra": "^5.0.3",
     "@types/handlebars": "^4.0.38",
-    "@types/node": "^10.5.0"
+    "@types/node": "^10.5.0",
+    "typescript": "^2.9.2"
   }
 }
