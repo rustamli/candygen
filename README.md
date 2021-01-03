@@ -2,6 +2,14 @@
 
 Highly customizable multi-purpose rule based generator that can be used in a wide variety of use-cases. Candygen has been previously used for building static websites with arbitrary structure, email templating and even code generation (see [Examples](#examples) section for more details).
 
+---
+
+:warning: Currently working on a [Snowpack](https://www.snowpack.dev/) based upgraded version of candygen with Hot module reload, Built-in helpers, Smart defaults, Native CSV/JSON support and Server-Sider Rendering. Please check this repository for more details: https://github.com/rustamli/snowpack-handlebars-starter
+
+_Also feel free to reach out [on twitter](https://twitter.com/nehfy) if you have questions or feedback_
+
+---
+
 ## Getting Started
 
 These section will guide you through installation and basic setup for your first candygen project.
